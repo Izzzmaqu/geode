@@ -6,6 +6,9 @@ project(${PROJECT_NAME} VERSION 1.0.0)
 
 add_library(${PROJECT_NAME} SHARED main.cpp)
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_23)
+if (WIN32)
+target_sources(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/../../src/platform/windows/CheckSpawnAbuseShim.cpp)
+endif()
 
 add_compile_definitions(EXPORTING_MOD)
 
